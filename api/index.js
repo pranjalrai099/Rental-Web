@@ -25,8 +25,9 @@ const Bookings=require('./models/Booking.js') // Make sure the path is correct
 app.use(bodyParser.urlencoded({extended:true}))
 app.use('/uploads',express.static(__dirname+'/uploads'));
 app.use(cors({
-    credentials:true,
-    origin:'https://rental-1vh.vercel.app',
+ credentials: true,
+    origin: 'https://rental-1vh.vercel.app',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
 }));
 
 function ConnectToDb(){
