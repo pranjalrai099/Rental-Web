@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use('/uploads',express.static(__dirname+'/uploads'));
 app.use(cors({
  credentials: true,
-    origin: 'https://rental-1vh.vercel.app',
+    origin: 'https://rental-web-wpj1-e6h9nldel-pranjal-rais-projects.vercel.app',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
 }));
 
