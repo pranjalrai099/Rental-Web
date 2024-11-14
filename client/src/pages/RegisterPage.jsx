@@ -24,7 +24,7 @@ export default function RegisterPage(){
               })
               .catch(function (error) {
                 console.log(error);
-                alert("Regsiteration Failed");
+                toast.error("Regsiteration Failed");
               });
         }
     return(
