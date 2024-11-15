@@ -18,7 +18,7 @@ export default function FilteredGuest() {
                 {place.addedPhotos && place.addedPhotos.length > 0 ? (
                   <img
                     className="rounded-2xl object-cover aspect-square"
-                    src={`http://localhost:4000/uploads/${place.addedPhotos[0]}`}
+                    src={`https://rental-web-1-backend.onrender.com/uploads/${place.addedPhotos[0]}`}
                     alt={place.title}
                   />
                 ) : (
