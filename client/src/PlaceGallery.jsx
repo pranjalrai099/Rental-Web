@@ -16,7 +16,7 @@ export default function PlaceGallery({place}){
                     </div>
                     {place.addedPhotos.length > 0 && place.addedPhotos.map(photo => (
                         <div>
-                            <img src={'http://localhost:4000/uploads/' + photo} alt="" />
+                            <img src={'https://rental-web-1-backend.onrender.com/uploads/' + photo} alt="" />
                         </div>
                     ))}
                 </div>
@@ -29,17 +29,17 @@ export default function PlaceGallery({place}){
             <div>
                 {place.addedPhotos?.[0] && (
                     <div>
-                        <img onClick={()=> setshowall(true)} className="aspect-square cursor-pointer object-cover " src={`http://localhost:4000/uploads/${place.addedPhotos[0]}`} alt="" />
+                        <img onClick={()=> setshowall(true)} className="aspect-square cursor-pointer object-cover " src={`https://rental-web-1-backend.onrender.com/uploads/${place.addedPhotos[0]}`} alt="" />
                     </div>
                 )}
             </div>
             <div className="grid">
                 {place.addedPhotos?.[1] && (
-                    <img onClick={()=> setshowall(true)}  className="aspect-square cursor-pointer object-cover " src={`http://localhost:4000/uploads/${place.addedPhotos[1]}`} alt="" />
+                    <img onClick={()=> setshowall(true)}  className="aspect-square cursor-pointer object-cover " src={`https://rental-web-1-backend.onrender.com/uploads/${place.addedPhotos[1]}`} alt="" />
                 )}
                 <div className="overflow-hidden" >
                     {place.addedPhotos?.[2] && (
-                        <img onClick={()=> setshowall(true)}  className="aspect-square cursor-pointer object-cover relative top-2 " src={`http://localhost:4000/uploads/${place.addedPhotos[2]}`} alt="" />
+                        <img onClick={()=> setshowall(true)}  className="aspect-square cursor-pointer object-cover relative top-2 " src={`https://rental-web-1-backend.onrender.com/uploads/${place.addedPhotos[2]}`} alt="" />
                     )}
                 </div>
             </div>
