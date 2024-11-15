@@ -14,7 +14,7 @@ export default function IndexPage() {
         <Link className="" to={'/places/'+place._id}>
         <div className="bg-gray-500 mb-2 rounded-2xl flex" key={place._id}> {/* Add a unique key if using map */}
           {place.addedPhotos?.[0] && (
-            <img className="rounded-2xl object-cover aspect-square" src={`http://localhost:4000/uploads/${place.addedPhotos[0]}`} alt={place.title} />
+            <img className="rounded-2xl object-cover aspect-square" src={`https://rental-web-1-backend.onrender.com/uploads/${place.addedPhotos[0]}`} alt={place.title} />
           )}
           </div>
           <h2 className="font-bold">{place.address}</h2>
