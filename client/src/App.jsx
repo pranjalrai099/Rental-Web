@@ -23,7 +23,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import MyCart from './MyCart';
 import CartPlace from './CartPlace';
-axios.defaults.baseURL='https://rental-web-1y-fa4kuh9h9-pranjal-rais-projects.vercel.app';
+axios.defaults.baseURL='https://rental-web-1-backend.onrender.com';
 axios.defaults.withCredentials=true;
 function App() {
 
