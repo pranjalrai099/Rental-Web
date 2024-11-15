@@ -12,7 +12,7 @@ const imageDownloader=require('image-downloader');
 require('dotenv').config();
 const app=express();
 const cookieParser=require('cookie-parser');
-const port=4000;
+const port=process.env.PORT || 4000;
 const jwtSecret='yugdjwheiudhkhfyego';
 const multer=require('multer');
 const fs=require('fs');
