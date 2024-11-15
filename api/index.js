@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use('/uploads',express.static(__dirname+'/uploads'));
 app.use(cors({
  credentials: true,
-    origin: 'https://localhost:4000',
+    origin: "https://rental-web-frontend.onrender.com",
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
 }));
 
