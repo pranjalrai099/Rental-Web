@@ -28,7 +28,6 @@ app.use(cors({
  credentials: true,
     origin: "https://rental-web-frontend.onrender.com",
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
- allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
 function ConnectToDb(){
