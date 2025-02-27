@@ -11,7 +11,13 @@ const placeSchema = new mongoose.Schema({
   checkin: String,
   checkout: String,
   maxguest: Number,
-  price:Number,
+  price: Number,
+  comments: [{ 
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },  // Reference to User model
+    text: String 
+  }],  
+  likes: { type: Number, default: 0 },  
+  dislikes: { type: Number, default: 0 }  
 });
 
 const Place = mongoose.model('Place', placeSchema);
