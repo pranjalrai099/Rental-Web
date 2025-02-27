@@ -430,9 +430,111 @@ app.post('/filterbyGuest', async (req, res) => {
     res.status(500).json({ error: 'Server error while filtering by guest count' }); // Updated error response
   }
 });
+app.post('/places/:id/like', async (req, res) => {
+  const { id } = req.params;
+  const { liked } = req.body;
+    
+  try {
+      const place = await Place.findById(id);
+      if (!place) {
+          return res.status(404).json({ message: "Place not found" });
+      }
 
+      place.likes = liked ? place.likes + 1 : place.likes - 1;
+      await place.save();
+
+      res.json({ message: "Like updated successfully", likes: place.likes });
+  } catch (error) {
+      console.error("Error updating like:", error);
+      res.status(500).json({ message: "Server error" });
+  }
+});
+
+app.post('/places/:id/dislike', async (req, res) => {
+  const { id } = req.params;
+  const { disliked } = req.body;
+
+  try {
+      const place = await Place.findById(id);
+      if (!place) {
+          return res.status(404).json({ message: "Place not found" });
+      }
+
+      place.dislikes = disliked ? place.dislikes + 1 : place.dislikes - 1;
+      await place.save();
+      console.log(place);
+
+      res.json({ message: "Dislike updated successfully", dislikes: place.dislikes });
+  } catch (error) {
+      console.error("Error updating dislike:", error);
+      res.status(500).json({ message: "Server error" });
+  }
+});
+app.post("/places/:id/comment", async (req, res) => {
+  const userData = await getuserdatafromtoken(req);
+  const { id } = req.params;
+  const { text } = req.body;
+
+  if (!userData) {
+    return res.status(401).json({ error: "Please log in to comment." });
+  }
+
+  if (!text) {
+    return res.status(400).json({ error: "Comment cannot be empty." });
+  }
+
+  try {
+    const place = await Place.findById(id);
+    if (!place) {
+      return res.status(404).json({ error: "Place not found." });
+    }
+
+    const newComment = {
+      user: userData.id,
+      text,
+      timestamp: new Date()
+    };
+
+    place.comments.push(newComment);
+    await place.save();
+
+    res.json({ message: "Comment added successfully", comment: newComment });
+  } catch (error) {
+    console.error("Error adding comment:", error);
+    res.status(500).json({ error: "Failed to add comment." });
+  }
+});
+app.get("/places/:id/comments", async (req, res) => {
+  const userData = await getuserdatafromtoken(req);
+  try {
+    console.log("Request Params:", req.params);
+
+    const { id } = req.params;
+    if (!id) {
+      return res.status(400).json({ error: "Invalid place ID." });
+    }
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ error: "Invalid place ID format." });
+    }
+
+
+    
+    const place = await Place.findById(id).populate("comments.user", "name email");
+    
+    console.log("Fetched place:", place);
+
+    if (!place) {
+      return res.status(404).json({ error: "Place not found." });
+    }
+
+    res.json(place.comments);
+  } catch (error) {
+    console.error("Error fetching comments:", error);
+    res.status(500).json({ error: error.message }); // Send exact error message to frontend
+  }
+});
 
 app.listen(4000,() => {
-  console.log('https://rental-web-1-backend.onrender.com')
+  console.log('http://localhost:4000')
 });
-// 5BtZOM0hBU1JMcRE // mongo password
