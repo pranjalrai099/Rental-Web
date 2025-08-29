@@ -1,5 +1,5 @@
 # Rental-Web
-A full-stack rental platform where users can explore, book, and manage stays at different places. The website provides a seamless experience similar to Airbnb, with features for both guests and property owners.
+A full-stack rental platform where users can explore, book, and manage stays at different places. The website provides a seamless experience with features for both guests and property owners.
 
  Features
  Authentication
